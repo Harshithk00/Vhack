@@ -1,0 +1,61 @@
+policy,scenario,avg_wait_s,throughput_vph,mean_queue,max_queue,switches,decision_ms,seed,qubits
+Fixed-time,off_peak,21.91,1083.2,6.28,9.1,239,0.0,0,0
+Max-queue (actuated),off_peak,28.86,1064.2,8.27,8.2,193,0.0,0,0
+QUBO + Simulated annealing,off_peak,23.42,1076.4,6.71,8.0,195,8.84,0,8
+QUBO + Exact (brute force),off_peak,23.27,1071.2,6.67,9.1,201,0.15,0,8
+QUBO + QAOA (p=2),off_peak,23.27,1071.2,6.67,9.1,201,20.33,0,8
+Fixed-time,off_peak,21.15,1115.2,6.29,9.0,240,0.0,1,0
+Max-queue (actuated),off_peak,27.29,1102.0,8.11,8.7,182,0.0,1,0
+QUBO + Simulated annealing,off_peak,21.21,1114.6,6.3,8.0,198,8.78,1,8
+QUBO + Exact (brute force),off_peak,20.8,1114.6,6.18,8.0,206,0.15,1,8
+QUBO + QAOA (p=2),off_peak,20.8,1114.6,6.18,8.0,206,20.95,1,8
+Fixed-time,off_peak,20.74,1146.0,6.28,9.0,239,0.0,2,0
+Max-queue (actuated),off_peak,29.75,1138.8,9.01,9.5,195,0.0,2,0
+QUBO + Simulated annealing,off_peak,22.72,1146.0,6.88,9.0,211,8.93,2,8
+QUBO + Exact (brute force),off_peak,21.75,1142.6,6.59,9.0,211,0.16,2,8
+QUBO + QAOA (p=2),off_peak,21.75,1142.6,6.59,9.0,211,19.79,2,8
+Fixed-time,rush_hour,75.25,2204.8,47.49,32.0,239,0.0,0,0
+Max-queue (actuated),rush_hour,34.51,2296.0,21.78,13.8,170,0.0,0,0
+QUBO + Simulated annealing,rush_hour,29.03,2293.2,18.32,12.0,97,9.34,0,8
+QUBO + Exact (brute force),rush_hour,29.03,2293.2,18.32,12.0,97,0.16,0,8
+QUBO + QAOA (p=2),rush_hour,29.03,2293.2,18.32,12.0,97,20.5,0,8
+Fixed-time,rush_hour,91.66,2252.8,59.27,43.0,240,0.0,1,0
+Max-queue (actuated),rush_hour,33.42,2344.4,21.61,14.1,170,0.0,1,0
+QUBO + Simulated annealing,rush_hour,30.19,2367.2,19.52,12.0,110,9.63,1,8
+QUBO + Exact (brute force),rush_hour,31.27,2367.2,20.22,16.0,110,0.15,1,8
+QUBO + QAOA (p=2),rush_hour,31.27,2367.2,20.22,16.0,110,21.13,1,8
+Fixed-time,rush_hour,83.71,2290.0,55.34,51.0,239,0.0,2,0
+Max-queue (actuated),rush_hour,35.54,2413.8,23.5,16.7,164,0.0,2,0
+QUBO + Simulated annealing,rush_hour,30.68,2419.4,20.28,13.0,107,9.36,2,8
+QUBO + Exact (brute force),rush_hour,30.16,2419.4,19.94,13.0,107,0.15,2,8
+QUBO + QAOA (p=2),rush_hour,30.16,2419.4,19.94,13.0,107,19.86,2,8
+Fixed-time,event_surge,71.92,1955.0,40.48,58.0,239,0.0,0,0
+Max-queue (actuated),event_surge,30.99,2047.0,17.44,15.2,201,0.0,0,0
+QUBO + Simulated annealing,event_surge,26.96,2060.6,15.17,13.0,191,9.15,0,8
+QUBO + Exact (brute force),event_surge,27.02,2060.6,15.21,13.0,191,0.15,0,8
+QUBO + QAOA (p=2),event_surge,27.02,2060.6,15.21,13.0,191,20.86,0,8
+Fixed-time,event_surge,101.66,2023.8,60.6,81.4,240,0.0,1,0
+Max-queue (actuated),event_surge,31.93,2174.4,19.04,20.0,202,0.0,1,0
+QUBO + Simulated annealing,event_surge,27.81,2174.8,16.58,16.3,192,9.24,1,8
+QUBO + Exact (brute force),event_surge,27.99,2172.0,16.69,16.0,198,0.15,1,8
+QUBO + QAOA (p=2),event_surge,27.99,2172.0,16.69,16.0,198,20.95,1,8
+Fixed-time,event_surge,85.05,2024.8,50.18,70.5,239,0.0,2,0
+Max-queue (actuated),event_surge,32.51,2145.2,19.18,14.1,199,0.0,2,0
+QUBO + Simulated annealing,event_surge,27.64,2147.2,16.31,12.8,201,9.18,2,8
+QUBO + Exact (brute force),event_surge,27.64,2147.2,16.31,12.8,201,0.15,2,8
+QUBO + QAOA (p=2),event_surge,27.64,2147.2,16.31,12.8,201,20.49,2,8
+Fixed-time,random,23.23,1694.6,10.58,9.0,239,0.0,0,0
+Max-queue (actuated),random,30.91,1687.6,14.08,10.2,211,0.0,0,0
+QUBO + Simulated annealing,random,23.48,1694.6,10.7,10.0,213,8.93,0,8
+QUBO + Exact (brute force),random,23.11,1694.6,10.53,10.0,209,0.15,0,8
+QUBO + QAOA (p=2),random,23.11,1694.6,10.53,10.0,209,20.25,0,8
+Fixed-time,random,24.09,1786.6,11.64,9.7,240,0.0,1,0
+Max-queue (actuated),random,31.58,1778.6,15.26,11.7,210,0.0,1,0
+QUBO + Simulated annealing,random,23.78,1786.6,11.49,10.0,204,9.08,1,8
+QUBO + Exact (brute force),random,23.15,1786.6,11.19,10.0,208,0.15,1,8
+QUBO + QAOA (p=2),random,23.15,1786.6,11.19,10.0,208,21.46,1,8
+Fixed-time,random,25.85,1819.2,12.68,11.0,239,0.0,2,0
+Max-queue (actuated),random,33.57,1803.8,16.47,12.2,201,0.0,2,0
+QUBO + Simulated annealing,random,24.64,1809.8,12.09,10.0,207,9.45,2,8
+QUBO + Exact (brute force),random,24.0,1809.8,11.77,10.0,205,0.15,2,8
+QUBO + QAOA (p=2),random,24.0,1809.8,11.77,10.0,205,20.57,2,8
