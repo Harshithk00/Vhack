@@ -185,6 +185,16 @@ tests/             26 tests (QUBO maths, Ising mapping, QAOA, simulator)
 4. A. Lucas, *Ising formulations of many NP problems*, Frontiers in Physics 2, 5 (2014).
 5. Qiskit contributors, *Qiskit: An Open-source Framework for Quantum Computing*.
 
+## Team NULL POINTER
+
+Department of Computer Science & Engineering, SIT Tumkur
+
+| Member | Role |
+|---|---|
+| **Harshit Kumar** | Team Lead |
+| Himansu Rauniyar | Team Member |
+| Aditya Pattar | Team Member |
+
 ## License
 
 MIT, see [LICENSE](LICENSE).

@@ -55,10 +55,17 @@ with st.sidebar:
     noise = st.slider("2-qubit gate error", 0.0, 0.05, 0.01, 0.005, disabled=backend != "aer")
     cvar_alpha = st.slider("CVaR α (1 = plain expectation)", 0.05, 1.0, 1.0, 0.05)
 
+    st.divider()
+    st.caption("**Team NULL POINTER**  \nHarshit Kumar (Team Lead)  \nHimansu Rauniyar  \nAditya Pattar  \nCSE, SIT Tumkur")
+
 n_qubits = int(rows * cols * horizon)
 limit = {"fast": 18, "statevector": 14, "aer": 12}[backend]
 
 st.title("Quantum-Assisted Traffic Signal Optimization")
+st.caption(
+    "Team **NULL POINTER** · **Harshit Kumar** (Team Lead), Himansu Rauniyar, Aditya Pattar · "
+    "Dept. of Computer Science & Engineering, SIT Tumkur · [GitHub](https://github.com/Harshithk00/Vhack)"
+)
 st.markdown(
     "Each signal-and-time-slot is **one qubit**: `0` = north–south green, `1` = east–west green. "
     "QAOA searches all plans at once for the one that keeps queues short without needless switching."
