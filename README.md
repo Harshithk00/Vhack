@@ -17,6 +17,14 @@ effect of hardware noise.
 
 ![QAOA plan on a 3x3 grid](results/figures/hero.png)
 
+## Try it live
+
+| | |
+|---|---|
+| 🎬 **Demo video** (4 min, plus a 1.5-min pitch) | [vhack.harshithk.tech](https://vhack.harshithk.tech) |
+| 🚦 **Live dashboard** (QAOA running on our server) | [qtraffic.harshithk.tech](https://qtraffic.harshithk.tech) |
+| 🖼️ **Poster and slides** | [`presentation/`](presentation/) |
+
 ## Highlights
 
 - **One qubit = one signal in one 30-second slot.** A 2x2 grid planned one minute
@@ -134,6 +142,7 @@ pip install -r requirements.txt
 | Full benchmark study (~5 min) | `python benchmarks/run_benchmarks.py` |
 | Quick benchmark smoke test | `python benchmarks/run_benchmarks.py --quick` |
 | Tests | `pytest` |
+| Run the dashboard in Docker | `docker build -t qtraffic . && docker run -p 8501:8501 qtraffic` |
 
 Use it as a library:
 
@@ -162,7 +171,9 @@ qtraffic/
   demo.py          terminal demo
 app/streamlit_app.py      interactive dashboard
 benchmarks/run_benchmarks.py   the full study → results/
-docs/              formulation and pitch script
+docs/              formulation, team pitch script, judge Q&A
+presentation/      Fall Fest poster (.pptx/.pdf) and 5-slide deck
+Dockerfile         container for the live dashboard
 tests/             26 tests (QUBO maths, Ising mapping, QAOA, simulator)
 ```
 
