@@ -11,6 +11,8 @@ from __future__ import annotations
 
 import numpy as np
 
+from .classical import SolveResult
+from .formulation import QuboWeights, build_signal_problem
 from .network import TrafficNetwork
 from .simulator import TrafficState
 
@@ -41,3 +43,22 @@ class MaxQueuePolicy:
         phase[ew_longer] = 1
         phase[ns_longer] = 0
         return phase
+
+
+class QuboPolicy:
+    """Model-predictive control: each slot, build the signal QUBO from the live queues,
+    solve it with any solver (exact, annealing or QAOA) and apply the first slot of the
+    plan (receding horizon)."""
+
+    def __init__(self, solver, horizon: int = 2, weights: QuboWeights | None = None, name: str | None = None):
+        self.solver = solver
+        self.horizon = horizon
+        self.weights = weights or QuboWeights()
+        self.name = name or f"QUBO + {solver.name}"
+        self.history: list[SolveResult] = []
+
+    def decide(self, network: TrafficNetwork, state: TrafficState, slot_steps: int) -> np.ndarray:
+        problem = build_signal_problem(network, state, self.horizon, slot_steps, self.weights)
+        result = self.solver.solve(problem.qubo)
+        self.history.append(result)
+        return problem.decode(result.x)[0]

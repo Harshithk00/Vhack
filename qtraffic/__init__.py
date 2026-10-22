@@ -1,16 +1,27 @@
 """qtraffic - quantum-assisted traffic signal optimization with QAOA."""
 
+from .classical import ExactSolver, SimulatedAnnealingSolver, SolveResult
+from .formulation import QuboWeights, SignalProblem, build_signal_problem
 from .network import EW_GREEN, NS_GREEN, TrafficNetwork
-from .policies import FixedTimePolicy, MaxQueuePolicy
+from .policies import FixedTimePolicy, MaxQueuePolicy, QuboPolicy
+from .qubo import QUBO
 from .scenarios import SCENARIOS, make_scenario
 from .simulator import SimResult, TrafficSimulator, TrafficState
 
 __all__ = [
     "EW_GREEN",
     "NS_GREEN",
+    "QUBO",
     "SCENARIOS",
+    "ExactSolver",
     "FixedTimePolicy",
     "MaxQueuePolicy",
+    "QuboPolicy",
+    "QuboWeights",
+    "SignalProblem",
+    "SimulatedAnnealingSolver",
+    "SolveResult",
+    "build_signal_problem",
     "SimResult",
     "TrafficNetwork",
     "TrafficSimulator",
