@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qtraffic"
+version = "0.1.0"
+description = "Quantum-assisted traffic signal optimization using QAOA (Qiskit)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "qiskit>=2.0",
+    "qiskit-aer>=0.17",
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "pandas>=2.0",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+app = ["streamlit>=1.40", "plotly>=5.20", "pylatexenc>=2.10"]
+dev = ["pytest>=8.0"]
+
+[tool.setuptools]
+packages = ["qtraffic"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
