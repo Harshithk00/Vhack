@@ -59,6 +59,10 @@ class QuboPolicy:
 
     def decide(self, network: TrafficNetwork, state: TrafficState, slot_steps: int) -> np.ndarray:
         problem = build_signal_problem(network, state, self.horizon, slot_steps, self.weights)
-        result = self.solver.solve(problem.qubo)
+        kwargs = {}
+        if getattr(self.solver, "supports_warm_start", False) and self.history:
+            # reuse last slot's QAOA angles: traffic changes slowly, so do the landscapes
+            kwargs["initial_params"] = self.history[-1].info.get("params")
+        result = self.solver.solve(problem.qubo, **kwargs)
         self.history.append(result)
         return problem.decode(result.x)[0]

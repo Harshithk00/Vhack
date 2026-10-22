@@ -11,7 +11,7 @@ with classical optimizers under different traffic conditions.
 
 - [x] Phase 1: traffic network model, scenarios and queue simulator
 - [x] Phase 2: QUBO formulation and classical solvers
-- [ ] Phase 3: QAOA solver
+- [x] Phase 3: QAOA solver
 - [ ] Phase 4: benchmarks
 - [ ] Phase 5: interactive dashboard
 - [ ] Phase 6: docs and polish
