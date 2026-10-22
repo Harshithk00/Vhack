@@ -25,16 +25,21 @@ energy expectation or CVaR (Barkoutsos et al., Quantum 2020).
 
 from __future__ import annotations
 
+import threading
 import time
 from dataclasses import dataclass, replace
 
 import numpy as np
+from qiskit import QuantumCircuit, transpile
+from qiskit.circuit import ParameterVector
+from qiskit.quantum_info import Statevector
 from scipy.optimize import minimize
 
 from .classical import SolveResult
 from .qubo import QUBO, bit_matrix
 
 BASIS_GATES = ["cx", "rz", "sx", "x"]
+_AER_LOCK = threading.Lock()  # Aer is not safe to drive from several threads at once
 
 
 @dataclass
@@ -111,9 +116,6 @@ class QAOASolver:
 
     @staticmethod
     def build_circuit(qubo: QUBO, reps: int, measure: bool = False):
-        from qiskit import QuantumCircuit
-        from qiskit.circuit import ParameterVector
-
         n = qubo.num_vars
         h, J, _ = qubo.to_ising()
         gammas, betas = ParameterVector("γ", reps), ParameterVector("β", reps)
@@ -142,8 +144,6 @@ class QAOASolver:
         return qc.assign_parameters(mapping)
 
     def circuit_stats(self, qubo: QUBO, reps: int | None = None) -> dict:
-        from qiskit import transpile
-
         reps = reps or self.config.reps
         qn, _ = qubo.normalized()
         qc = self.bind(self.build_circuit(qn, reps), linear_ramp(reps))
@@ -166,20 +166,19 @@ class QAOASolver:
         if backend == "fast":
             return lambda params: fast_probabilities(diag, params, n)
         if backend == "statevector":
-            from qiskit.quantum_info import Statevector
-
             qc = self.build_circuit(qn, reps)
             return lambda params: Statevector(self.bind(qc, params)).probabilities()
         if backend == "aer":
-            from qiskit import transpile
             from qiskit_aer import AerSimulator
 
-            sim = AerSimulator(noise_model=self._noise_model())
+            sim = AerSimulator(noise_model=self._noise_model(), max_parallel_threads=1)
             tc = transpile(self.build_circuit(qn, reps, measure=True), basis_gates=BASIS_GATES, optimization_level=1)
 
             def probs(params):
                 seed = int(self.rng.integers(2**31))
-                counts = sim.run(self.bind(tc, params), shots=self.config.shots, seed_simulator=seed).result().get_counts()
+                with _AER_LOCK:
+                    job = sim.run(self.bind(tc, params), shots=self.config.shots, seed_simulator=seed)
+                    counts = job.result().get_counts()
                 out = np.zeros(2**n)
                 for key, v in counts.items():
                     out[int(key.replace(" ", ""), 2)] = v

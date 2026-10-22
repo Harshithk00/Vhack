@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-app = ["streamlit>=1.40", "plotly>=5.20", "pylatexenc>=2.10"]
+app = ["streamlit>=1.45", "plotly>=5.20", "pylatexenc>=2.10"]
 dev = ["pytest>=8.0"]
 
 [tool.setuptools]
