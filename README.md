@@ -172,7 +172,7 @@ qtraffic/
 app/streamlit_app.py      interactive dashboard
 benchmarks/run_benchmarks.py   the full study → results/
 docs/              formulation, team pitch script, judge Q&A
-presentation/      Fall Fest poster (.pptx/.pdf) and 5-slide deck
+presentation/      Fall Fest poster, hackathon submission deck and 5-slide deck
 Dockerfile         container for the live dashboard
 tests/             26 tests (QUBO maths, Ising mapping, QAOA, simulator)
 ```
